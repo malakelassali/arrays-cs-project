@@ -99,40 +99,53 @@ public class ManageStudent {
 
         // Print all
         System.out.println("== All Students ==");
-        for (Student s : arr) System.out.println(s);
+        for (Student s : students) System.out.println(s.toString());
         System.out.println("Total created: " + Student.getNumStudent());
 
         // 2) Oldest
-
+        System.out.println("Oldest: " + findOldest(students).toString());
 
         // 3) Count adults
-
+        System.out.println("There are " + countAdults(students) + " adults");
 
         // 4) Average grade
-
+        System.out.println("Average grade: " + averageGrade(students));
 
         // 5) Find by name
-
+        System.out.println(findStudentByName(students, "Khadija").toString());
 
         // 6) Sort by grade desc
         // sort function
+        sortByGradeDesc(students);
         System.out.println("\n== Sorted by grade (desc) ==");
-        for (Student s : arr) System.out.println(s);
+        for (Student s : students) System.out.println(s.toString());
 
         // 7) High achievers >= 15
         System.out.println("\nHigh achievers:");
-        printHighAchievers(arr);
+        printHighAchievers(students);
 
         // 8) Update grade by id
+        updateGrade(students, 4, 13);
+        Student updated= students[0];
+
+        for (Student student : students) {
+            if (student.getId() == 4) {
+                updated= student;
+                break;
+            }
+        }
         // function
         System.out.println("\nUpdated id=4? " + updated);
-        System.out.println(findStudentByName(arr, "Dina"));
+        System.out.println(findStudentByName(students, "Dina"));
 
         // 9) Duplicate names
-
+        System.out.println("Does the array have duplicate names? " + hasDuplicateNames(students));
 
         // 10) Append new student
-
+        Student[] newArray= appendStudent(students, new Student(6,"Malak", 20, 17));
+        for (Student student : newArray) {
+            System.out.println(student.toString());
+        }
     }
 }
 
